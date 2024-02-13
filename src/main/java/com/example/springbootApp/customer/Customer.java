@@ -2,27 +2,35 @@ package com.example.springbootApp.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
+@Entity
+@Table
 public class Customer {
 
-
-    private final Long id;
+    @Id
+    private Long id;
     @NotBlank(message = "name must be not empty")
-    private final String name;
+    private String name;
     @NotBlank(message = "password must not be empty")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private final  String password;
+    private  String password;
     @NotBlank(message = "email must not be empty")
     @Email
-    private final String email;
+    private String email;
 
     public Customer(Long id, String name, String password, String email) {
         this.id = id;
         this.name = name;
         this.password=password;
         this.email = email;
+    }
+
+    public Customer() {
     }
 
     @JsonProperty("customer_id")
