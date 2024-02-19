@@ -43,4 +43,5 @@ public class InfoApp {
                 ", version='" + version + '\'' +
                 '}';
     }
+
 }
